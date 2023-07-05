@@ -1,9 +1,5 @@
 import { EmbedBuilder } from 'discord.js';
-
-interface EmbedProps {
-  displayName: string;
-  iconURL: string;
-}
+import { EmbedProps } from 'types';
 
 export const getJoinEmbed = ({ displayName, iconURL }: EmbedProps) => {
   const embed = new EmbedBuilder()

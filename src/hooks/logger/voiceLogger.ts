@@ -1,5 +1,5 @@
 import { Client, VoiceState, EmbedBuilder } from 'discord.js';
-import { getJoinEmbed } from '../../components/embed/join';
+import { getJoinEmbed } from 'components/embed/join';
 
 export const setupVoiceLogger = (client: Client) => {
   client.on(
