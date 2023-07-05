@@ -4,6 +4,7 @@
     "module": "CommonJS",
     "outDir": "./build",
     "rootDir": "./src",
+    "baseUrl": "./src",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
