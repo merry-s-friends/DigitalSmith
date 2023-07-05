@@ -27,12 +27,12 @@ export const setupVoiceLogger = (client: Client) => {
       if (oldState.channelId && !newState.channelId) {
         const displayName = newState.member!.displayName;
 
-        const exampleEmbed = getLeaveEmbed({
+        const leaveEmbed = getLeaveEmbed({
           name: displayName,
           iconURL: newState.member!.user.displayAvatarURL(),
         });
 
-        voiceChannelOut?.send({ embeds: [exampleEmbed] });
+        voiceChannelOut?.send({ embeds: [leaveEmbed] });
       }
 
       if (
