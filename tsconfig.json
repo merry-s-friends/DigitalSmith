@@ -11,5 +11,8 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],
+  "paths": {
+    "*": ["*"]
+  },
   "exclude": ["node_modules", "build"]
 }
