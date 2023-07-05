@@ -9,11 +9,11 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "*": ["*"]
+    }
   },
   "include": ["src/**/*"],
-  "paths": {
-    "*": ["*"]
-  },
   "exclude": ["node_modules", "build"]
 }
