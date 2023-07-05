@@ -1,5 +1,5 @@
 import { Client, VoiceState, EmbedBuilder } from 'discord.js';
-import { getJoinEmbed } from 'components/embed/join';
+import { getJoinEmbed, getLeaveEmbed } from 'components/embed';
 
 export const setupVoiceLogger = (client: Client) => {
   client.on(
@@ -16,7 +16,7 @@ export const setupVoiceLogger = (client: Client) => {
         const displayName = newState.member!.displayName;
 
         const joinEmbed = getJoinEmbed({
-          displayName,
+          name: displayName,
           iconURL: newState.member!.user.displayAvatarURL(),
         });
 
@@ -27,14 +27,10 @@ export const setupVoiceLogger = (client: Client) => {
       if (oldState.channelId && !newState.channelId) {
         const displayName = newState.member!.displayName;
 
-        const exampleEmbed = new EmbedBuilder()
-          .setColor(0xef476f)
-          .setAuthor({
-            name: `${displayName}`,
-            iconURL: newState.member!.user.displayAvatarURL(),
-          })
-          .setTimestamp()
-          .setDescription(`${displayName}님이 퇴장하셨습니다!`);
+        const exampleEmbed = getLeaveEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
 
         voiceChannelOut?.send({ embeds: [exampleEmbed] });
       }

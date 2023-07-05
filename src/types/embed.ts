@@ -1,4 +1,4 @@
 export interface EmbedProps {
-  displayName: string;
+  name: string;
   iconURL: string;
 }
