@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import { config } from 'dotenv';
-import { setupVoiceLogger } from 'hooks/logger';
+import { setupVoiceLogger } from './hooks/logger';
 
 config();
 
