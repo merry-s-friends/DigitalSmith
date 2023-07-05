@@ -1,5 +1,5 @@
 {
-  "name": "dokbot",
+  "name": "digital_smith",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pengooseDev/DokBot.git"
+    "url": "git+https://github.com/merry-s-friends/DigitalSmith.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pengooseDev/DokBot/issues"
+    "url": "https://github.com/merry-s-friends/DigitalSmith/issues"
   },
-  "homepage": "https://github.com/pengooseDev/DokBot#readme",
+  "homepage": "https://github.com/merry-s-friends/DigitalSmith#readme",
   "dependencies": {
     "@types/node": "^20.3.1",
     "discord.js": "^14.11.0",
