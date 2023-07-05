@@ -1,5 +1,5 @@
 import { EmbedBuilder } from 'discord.js';
-import { EmbedProps } from 'types';
+import { EmbedProps } from '../../types';
 
 export const getLeaveEmbed = ({ name, iconURL }: EmbedProps) => {
   const embed = new EmbedBuilder()
