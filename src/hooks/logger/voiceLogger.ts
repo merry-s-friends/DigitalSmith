@@ -1,4 +1,4 @@
-import { Client, VoiceState, EmbedBuilder } from 'discord.js';
+import { Client, VoiceState } from 'discord.js';
 import { getJoinEmbed, getLeaveEmbed } from 'components/embed';
 
 export const setupVoiceLogger = (client: Client) => {
@@ -35,6 +35,7 @@ export const setupVoiceLogger = (client: Client) => {
         voiceChannelOut?.send({ embeds: [leaveEmbed] });
       }
 
+      /* 이동 */
       if (
         oldState.channelId &&
         newState.channelId &&
@@ -42,21 +43,18 @@ export const setupVoiceLogger = (client: Client) => {
       ) {
         const displayName = newState.member!.displayName;
 
-        const exampleEmbed = new EmbedBuilder()
-          .setColor(0xffa502)
-          .setAuthor({
-            name: displayName,
-            iconURL: newState.member!.user.displayAvatarURL(),
-          })
-          .setTimestamp()
-          .setDescription(
-            `${displayName}님이 [${oldState.channel!.name}]에서 [${
-              newState.channel!.name
-            }]로 이동하셨습니다!`
-          );
+        const joinEmbed = getJoinEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
 
-        voiceChannelIn?.send({ embeds: [exampleEmbed] });
-        voiceChannelOut?.send({ embeds: [exampleEmbed] });
+        const leaveEmbed = getLeaveEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
+
+        voiceChannelIn?.send({ embeds: [joinEmbed] });
+        voiceChannelOut?.send({ embeds: [leaveEmbed] });
       }
     }
   );
