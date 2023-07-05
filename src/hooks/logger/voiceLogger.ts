@@ -1,4 +1,5 @@
-import { Client, VoiceState, EmbedBuilder } from 'discord.js';
+import { Client, VoiceState } from 'discord.js';
+import { getJoinEmbed, getLeaveEmbed } from 'components/embed';
 
 export const setupVoiceLogger = (client: Client) => {
   client.on(
@@ -14,32 +15,46 @@ export const setupVoiceLogger = (client: Client) => {
       if (!oldState.channelId && newState.channelId) {
         const displayName = newState.member!.displayName;
 
-        const exampleEmbed = new EmbedBuilder()
-          .setColor(0x30b198)
-          .setAuthor({
-            name: displayName,
-            iconURL: newState.member!.user.displayAvatarURL(),
-          })
-          .setTimestamp()
-          .setDescription(`${displayName}님이 등장하셨습니다!`);
+        const joinEmbed = getJoinEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
 
-        voiceChannelIn?.send({ embeds: [exampleEmbed] });
+        voiceChannelIn?.send({ embeds: [joinEmbed] });
       }
 
       // 퇴장 메시지
       if (oldState.channelId && !newState.channelId) {
         const displayName = newState.member!.displayName;
 
-        const exampleEmbed = new EmbedBuilder()
-          .setColor(0xef476f)
-          .setAuthor({
-            name: `${displayName}`,
-            iconURL: newState.member!.user.displayAvatarURL(),
-          })
-          .setTimestamp()
-          .setDescription(`${displayName}님이 퇴장하셨습니다!`);
+        const leaveEmbed = getLeaveEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
 
-        voiceChannelOut?.send({ embeds: [exampleEmbed] });
+        voiceChannelOut?.send({ embeds: [leaveEmbed] });
+      }
+
+      /* 이동 */
+      if (
+        oldState.channelId &&
+        newState.channelId &&
+        oldState.channelId !== newState.channelId
+      ) {
+        const displayName = newState.member!.displayName;
+
+        const joinEmbed = getJoinEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
+
+        const leaveEmbed = getLeaveEmbed({
+          name: displayName,
+          iconURL: newState.member!.user.displayAvatarURL(),
+        });
+
+        voiceChannelIn?.send({ embeds: [joinEmbed] });
+        voiceChannelOut?.send({ embeds: [leaveEmbed] });
       }
     }
   );

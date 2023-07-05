@@ -4,11 +4,15 @@
     "module": "CommonJS",
     "outDir": "./build",
     "rootDir": "./src",
+    "baseUrl": "./src",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "*": ["*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]
