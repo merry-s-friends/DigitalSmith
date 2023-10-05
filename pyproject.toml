@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "digitalsmith"
+version = "0.0.1"
+description = "DIGITAL SMITH DISCORD BOT"
+authors = ["Juanh201 <junah.dev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+discord-py = "^2.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
