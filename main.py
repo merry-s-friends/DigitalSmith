@@ -13,6 +13,7 @@ class MyBot(commands.Bot):
 
         self.initial_extension = [
             "Cogs.VoiceChannelLogHander",
+            "Cogs.RoleHandler",
         ]
 
     async def setup_hook(self):
