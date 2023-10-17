@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from typing import Optional
 from common import const
 import datetime
 
@@ -37,7 +36,7 @@ class VoiceChannelLogHandler(commands.Cog):
             await after.channel.send(embed=join_log_embed)
 
         # leave voice channel
-        if before.channel and not after.channel:
+        if before.channel:
             leave_log_embed = discord.Embed(
                 title=f"맴버가 나갔어요.",
                 color=0xef476f,
